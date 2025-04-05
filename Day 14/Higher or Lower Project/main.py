@@ -2,38 +2,48 @@ import random
 from game_data import data
 import art
 
+def format_data(account):
+    """Takes the account data and returns the printable format."""
+    account_name = account["name"]
+    account_descr = account["description"]
+    account_country = account["country"]
+    return f"{account_name}, a {account_descr}, from {account_country}"
+
 def new_profiles(answer, p_a, p_b):
-    if answer == 'A':
-        p_b = random.choice(data)
-        return p_a, p_b
-    else:
+    if answer == 'B':
         p_a = p_b
+    p_b = random.choice(data)
+    return p_a, p_b
+
+def get_two_distinct_profiles(profiles):
+    p_a = random.choice(profiles)
+    p_b = random.choice(profiles)
+    while p_a['name'] == p_b['name']:
         p_b = random.choice(data)
-        return p_a, p_b
+    return p_a, p_b
 
 print(art.logo)
 
 game_on = 'y'
 while game_on == 'y':
 
-    profile_a = random.choice(data)
-    profile_b = random.choice(data)
-    while profile_a['name'] == profile_b['name']:
-        profile_b = random.choice(data)
+    profile_a, profile_b = get_two_distinct_profiles(data)
 
     score = 0
     keep_playing = True
     while keep_playing:
-        print(f"Compare A: {profile_a['name']}, a {profile_a['description']}, from {profile_a['country']} ")
+        print(f"Compare A: " + format_data(profile_a))
 
 
         print(art.vs)
 
-        print(f"Compare B: {profile_b['name']}, a {profile_b['description']}, from {profile_b['country']} ")
+        print("Compare B: " + format_data(profile_b))
 
-        guess = input("Who has more followers? Type 'A' or 'B': ")
-
-        if profile_a['follower_count'] > profile_b['follower_count']:
+        guess = input("Who has more followers? Type 'A' or 'B': ").upper()
+        if guess not in ['A', 'B']:
+            print("Invalid input. Please type 'A' or 'B'.")
+            continue
+        elif profile_a['follower_count'] > profile_b['follower_count']:
             correct_answer = "A"
         else:
             correct_answer = "B"
