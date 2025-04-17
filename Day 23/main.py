@@ -21,13 +21,15 @@ while game_is_on:
 
     car_manager.move_cars()
     car_manager.remove_car()
+    # Detect player collision with car
     for car in car_manager.cars:
         if player.distance(car)< 20:
             game_is_on = False
+    # detect if player reached the other side
     if player.ycor() > 320:
         scoreboard.increase_level()
         player.reset_position()
-        car_manager.chance += 1
+        car_manager.chance += 5
         car_manager.car_speed += 1
 
     time.sleep(0.05)

@@ -21,11 +21,10 @@ class Car(Turtle):
 class CarManager:
     def __init__(self):
         self.cars = []
-        self.chance = 20
-        self.car_speed = 2
+        self.chance = 50
+        self.car_speed = 1
 
     def generate_car(self):
-
         if random.randint(1,1000) <= self.chance:
             position = (-340,random.randint(-12, 12)*20)
             self.cars.append(Car(position, self.car_speed))
