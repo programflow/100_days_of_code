@@ -5,6 +5,9 @@ import time
 
 from scoreboard import Scoreboard
 
+
+
+
 screen = Screen()
 screen.setup(width=800, height=600)
 screen.bgcolor("black")
@@ -12,8 +15,10 @@ screen.title("Pong")
 screen.tracer(0)
 screen.listen()
 
+scoreboard = Scoreboard()
 paddle_1 = Paddle((-350, 0))
 paddle_2 = Paddle((350, 0))
+ball = Ball()
 
 # Paddle 1 controls
 screen.onkey(paddle_1.move_up, "w")
@@ -22,11 +27,21 @@ screen.onkey(paddle_1.move_down, "s")
 screen.onkey(paddle_2.move_up, "Up")
 screen.onkey(paddle_2.move_down, "Down")
 
-scoreboard = Scoreboard()
 
 
-ball = Ball()
-score = [0,0]
+def restart_game():
+    scoreboard.score_1 = 0
+    scoreboard.score_2 = 0
+    scoreboard.update_score()
+    ball.reset_pos()
+
+
+screen.onkey(restart_game, "r")
+
+
+
+
+
 #Start the game
 game_on = True
 while game_on:
@@ -51,7 +66,9 @@ while game_on:
         scoreboard.update_score()
         ball.reset_pos()
 
-
+    if scoreboard.score_1 == 5 or scoreboard.score_2 == 5:
+        game_is_on = False
+        scoreboard.game_over()
 
     time.sleep(ball.move_speed)
 screen.exitonclick()

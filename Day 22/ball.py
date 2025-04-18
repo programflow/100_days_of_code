@@ -1,4 +1,5 @@
 from turtle import Turtle
+import random
 MOVE_DISTANCE = 5
 
 class Ball(Turtle):
@@ -17,9 +18,12 @@ class Ball(Turtle):
         self.goto(new_x, new_y)
 
     def bounce_y(self):
-         self.step_y *= -1
+        variation = random.uniform(0.9, 1.1) *-1
+        self.step_y *= variation
+
 
     def bounce_x(self):
+        variation = random.uniform(0.9, 1.1) *-1
         self.step_x *= -1
         self.move_speed *= 0.9
 

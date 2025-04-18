@@ -44,14 +44,17 @@ while game_on:
         speed -= .02
 
     if snek.head.xcor() >280 or snek.head.xcor() <-280 or snek.head.ycor() > 280 or snek.head.ycor() <-280:
-        game_on = False
+        scoreboard.reset_scoreboard()
+        snek.reset_snake()
+        speed = .2
         print("Wall collision")
 
     for snek_seg in snek.snake_body:
         if snek_seg.distance(snek.head) < 15:
-            game_on = False
+            scoreboard.reset_scoreboard()
+            snek.reset_snake()
+            speed = .2
             print("Snek collision")
             break
 
-scoreboard.game_over()
 screen.exitonclick()

@@ -17,6 +17,11 @@ class Scoreboard(Turtle):
         self.write(f"{self.score_1}        {self.score_2}", align="center", font=("Arial", 20, "bold"))
 
 
+    def game_over(self):
 
-
-
+        if self.score_1 == 5:
+            text = "Player 1 wins!"
+        else:
+            text = "Player 2 wins!"
+        self.goto(0, 0)
+        self.write(text, align="center", font=("Arial", 20, "bold"))

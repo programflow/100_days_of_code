@@ -74,3 +74,10 @@ class Snake:
     def go_down(self):
         if self.head.heading() != UP:
             self.head.setheading(DOWN)
+
+    def reset_snake(self):
+        for seg in self.snake_body:
+            seg.goto(1000, 1000)
+        self.snake_body.clear()
+        self.head.goto(0,0)
+        self.create_body()
