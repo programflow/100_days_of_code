@@ -22,11 +22,15 @@ import pandas
 
 #TODO 1. Create a dictionary in this format:
 nato_phonetic_alphabet = pandas.read_csv("nato_phonetic_alphabet.csv")
-nato_alphabet_dict = {row.iloc[0]:row.iloc[1] for (index, row) in nato_phonetic_alphabet.iterrows()}
+nato_alphabet_dict = {row.letter:row.code for (index, row) in nato_phonetic_alphabet.iterrows()}
 print(nato_alphabet_dict)
 # {"A": "Alfa", "B": "Bravo"}
 
 #TODO 2. Create a list of the phonetic code words from a word that the user inputs.
-word = input("Enter a word: ")
-code_word = [nato_alphabet_dict[letter.upper()] for letter in word]
-print(code_word)
+word = input("Enter a word: ").strip()
+try:
+    output = [nato_alphabet_dict[letter.upper()] for letter in word]
+
+    print(output)
+except KeyError as e:
+    print(f"Invalid word: {e}. Please enter letters only.")
