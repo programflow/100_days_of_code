@@ -69,12 +69,9 @@ print(f"\n⏰ Time's up! You guessed {len(state_manager.states_found)}/50 states
 screen.bye()
 
 
-states_to_learn = []
-states_list = state_data.state.unique().tolist()
-for state in states_list:
-    if state not in state_manager.states_found:
 
-        states_to_learn.append(state)
+states_list = state_data.state.unique().tolist()
+states_to_learn = [state for state in states_list if state not in state_manager.states_found]
 
 new_data = pd.DataFrame(states_to_learn)
 new_data.to_csv("states_to_learn.csv", mode = "w", index = False)
