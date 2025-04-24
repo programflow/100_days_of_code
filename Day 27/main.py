@@ -34,8 +34,7 @@ input = tk.Entry(width=10)
 input.grid(column=1, row=0)
 
 button =  tk.Button(text = "Click Me", command=convert_miles_to_km)
-button.grid(column=1, row=2
-            )
+button.grid(column=1, row=2)
 
 
 window.mainloop()
