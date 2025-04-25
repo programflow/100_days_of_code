@@ -27,10 +27,17 @@ print(nato_alphabet_dict)
 # {"A": "Alfa", "B": "Bravo"}
 
 #TODO 2. Create a list of the phonetic code words from a word that the user inputs.
-word = input("Enter a word: ").strip()
-try:
-    output = [nato_alphabet_dict[letter.upper()] for letter in word]
 
-    print(output)
-except KeyError as e:
-    print(f"Invalid word: {e}. Please enter letters only.")
+running = True
+def generate_code():
+    word = input("Enter a word: ").strip()
+    try:
+        output = [nato_alphabet_dict[letter.upper()] for letter in word]
+    except KeyError as e:
+        print(f"Invalid character: {e}. Please enter letters only.")
+        generate_code()
+    else:
+        print(output)
+        running = False
+
+generate_code()
