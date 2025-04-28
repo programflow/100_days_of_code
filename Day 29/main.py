@@ -145,7 +145,7 @@ website_entry.focus()
 email_entry = Entry(width=44, justify="left")
 email_entry.grid(row=2, column=1, columnspan=2, sticky="w")
 email_entry.insert(0, "<EMAIL>")
-password_entry = Entry(width=24, justify="left", show="*")
+password_entry = Entry(width=24, justify="left")
 password_entry.grid(row=3, column=1, sticky="w")
 password_entry.insert(0, "")
 

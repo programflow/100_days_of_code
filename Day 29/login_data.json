@@ -4,5 +4,11 @@
             "email": "y",
             "password": "y"
         }
+    ],
+    "google": [
+        {
+            "email": "johndoedothough@gmail.com",
+            "password": "QJ71BmE&lpw+A+q!1"
+        }
     ]
 }
