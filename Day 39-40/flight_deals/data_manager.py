@@ -1,34 +1,49 @@
 import requests
+import os
+from pprint import pprint
+from dotenv import load_dotenv
 
-sheety_endpoint = "https://api.sheety.co/2c421bd56502b283265aacb755fccccd/flightDeals/prices"
+load_dotenv()
 
+
+SHEETY_ENDPOINT = "https://api.sheety.co/2c421bd56502b283265aacb755fccccd/flightDeals/prices"
+BEARER_TOKEN = os.environ.get("SHEETY_TOKEN")
 
 
 class DataManager:
     #This class is responsible for talking to the Google Sheet.
     def __init__(self):
-        self.response = requests.get(sheety_endpoint)
-        self.data = self.response.json()
-        print(self.data)
 
-    def get_desired_flight_price(self):
-        for desired_flight in self.data["prices"]:
-            desired_flight_city = desired_flight["city"]
-            desired_flight_price = desired_flight["lowestPrice"]
-            print(desired_flight_city, desired_flight_price)
+        self.bearer_headers = {
+            "Authorization": f"Bearer {BEARER_TOKEN}"
+        }
+        self.sheet_data = {}
 
-    def post_iata_code(self):
-        for i in range(len(self.data["prices"])):
-            if self.data["prices"][i]["city"] == "Paris":
-                self.data["prices"][i]["iataCode"] ="testing"
-
-        print(self.data)
+    def get_desired_flight_data(self):
+        response = requests.get(SHEETY_ENDPOINT, headers=self.bearer_headers)
+        data = response.json()
+        self.sheet_data = data['prices']
+        pprint(self.sheet_data)
+        return self.sheet_data
 
 
+    def update_iata_code(self):
+
+        for city in self.sheet_data:
+
+            new_data = {
+                "price" : {
+                    "iataCode" : city["iataCode"],
+                }
+            }
+            response = requests.put(
+                url=f"{SHEETY_ENDPOINT}/{city['id']}",
+                json=new_data,
+                headers=self.bearer_headers
+            )
+            print(response.json())
 
 
 
 
-data_manager = DataManager()
 
-data_manager.post_iata_code()
