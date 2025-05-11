@@ -1,0 +1,36 @@
+/*CSS notes*/
+/*This allows us to attach to style as separate the style from the content i.e css vs html*/
+
+/*Three ways of adding css*/
+
+
+/*inline*/
+/*<tag style="css" />*/
+/*Goes inide the opening tag/*/
+/*<html style="background: blue"> </html>*/
+/*Only recommending for use in single element*/
+
+
+
+/*internal*/
+/*<style>css</style>*/
+/*Use a style tag*/
+/*We have to add a selector*/
+/*<style>*/
+/*    html {*/
+/*    width: 100%;*/
+/*}*/
+/*</style>*/
+/*Useful for tageting a single wepage*/
+
+
+
+/*External*/
+/*<link href="style.css"/>*/
+/*This lives in a completely different file.*/
+/*Needs a link element that contains a relationship (rel="stylesheet") and location (href="./styles.css")*/
+/*Another part will be in a css file
+ html {
+  background: gree;
+ }*/
+/*Used for an entire website*/

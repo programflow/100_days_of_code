@@ -1,0 +1,21 @@
+Color properties
+
+# structure
+(element_name) {
+    (Property) : (value)
+}
+
+# Examples
+html {
+    background-color: red
+}
+
+# this changes the text color
+h1 {
+    color: blue
+}
+
+
+h1 {
+    color: #5D3891
+}

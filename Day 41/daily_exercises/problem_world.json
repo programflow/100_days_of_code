@@ -1,0 +1,29 @@
+{
+  "user": {
+    "id": 1,
+    "profile": {
+      "name": "Alice",
+      "details": {
+        "age": 30,
+        "email": "alice@example.com"
+      }
+    },
+    "posts": [
+      {
+        "title": "Hello",
+        "likes": 10
+      },
+      {
+        "title": "Update",
+        "likes": 5
+      }
+    ]
+  },
+  "meta": {
+    "created": "2023-01-01",
+    "location": {
+      "city": "NYC",
+      "zipcode": "10001"
+    }
+  }
+}

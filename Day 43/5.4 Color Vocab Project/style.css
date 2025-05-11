@@ -1,0 +1,31 @@
+#red {
+    color: red;
+}
+
+#blue {
+    color: blue;
+}
+
+#orange {
+    color: orange;
+}
+#green {
+    color: green;
+}
+#yellow {
+    color: yellow;
+}
+
+*[class="color-title"]{
+    font-weight: normal;
+}
+
+img{
+    height: 200px;
+    width: 200px;
+    transition: transform 0.3s ease;
+}
+img:hover{
+    transform: rotate(30deg);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}

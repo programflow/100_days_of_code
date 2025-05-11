@@ -1,0 +1,21 @@
+{
+  "user": {
+    "name": "Alice",
+    "email": "alice@example.com",
+    "location": {
+      "city": "Wonderland",
+      "postal": 12345
+    }
+  },
+  "projects": [
+    {
+      "title": "JSON Searcher",
+      "language": "Python"
+    },
+    {
+      "title": "Portfolio Site",
+      "language": "HTML"
+    }
+  ],
+  "tags": ["python", {"lang": "Python"}]
+}
