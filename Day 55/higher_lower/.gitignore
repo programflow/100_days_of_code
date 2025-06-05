@@ -1,0 +1,25 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.venv/
+env/
+venv/
+
+# PyCharm project files
+.idea/
+
+# Local environment settings
+.env
+
+# SQLite DBs
+*.sqlite3
+*.db
+
+
+# Test files
+guess_the_number_website.py
+practice_1.py
+practice_2.py
